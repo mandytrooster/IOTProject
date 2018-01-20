@@ -13,6 +13,7 @@ using System.IO.Ports;
 
 	SerialPort serial = new SerialPort("/dev/cu.usbmodem1421", 9600);
 
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D> ();
@@ -20,6 +21,8 @@ using System.IO.Ports;
 		if (!serial.IsOpen) {
 			serial.Open ();
 		}
+		serial.ReadTimeout = 1;
+
 		// check if this is pushed to git
 		// Parsed de waarde van seriele verbinding naar de integer gravity. Lukt dit niet -> default gravity 
 		System.Int32.TryParse(serial.ReadLine(), out scroll);
