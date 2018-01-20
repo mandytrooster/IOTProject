@@ -20,7 +20,7 @@ using System.IO.Ports;
 		if (!serial.IsOpen) {
 			serial.Open ();
 		}
-
+		// check if this is pushed to git
 		// Parsed de waarde van seriele verbinding naar de integer gravity. Lukt dit niet -> default gravity 
 		System.Int32.TryParse(serial.ReadLine(), out scroll);
 		speed = scroll;
