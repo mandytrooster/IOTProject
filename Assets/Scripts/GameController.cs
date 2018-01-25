@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour {
 	{
 		gameOverText.SetActive (true);
 		gameOver = true;
+		Scrolling.stopScrolling = true;
 	}
 
 }

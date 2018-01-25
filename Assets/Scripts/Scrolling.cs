@@ -3,83 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 
-	public class Scrolling : MonoBehaviour {
+public class Scrolling : MonoBehaviour {
 
 	private Rigidbody2D rb;
-//	public float scroll;
-	public float speed;
+	private int speed = 4;
+	public static bool stopScrolling = false;
 	public int tempInt;
-	public int scroll = 4; // sets standard gravity to 4. Can be changed later
+//	public int scroll = 4; //sets initial scroll speed to 0
 
 	SerialPort serial = new SerialPort("/dev/cu.usbmodem1421", 9600);
-
 
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D> ();
+		rb.velocity = new Vector2 (-speed, 0);
 
 		if (!serial.IsOpen) {
 			serial.Open ();
 		}
 		serial.ReadTimeout = 1;
 
-		// check if this is pushed to git
-		// Parsed de waarde van seriele verbinding naar de integer gravity. Lukt dit niet -> default gravity 
-		System.Int32.TryParse(serial.ReadLine(), out scroll);
-		speed = scroll;
-		tempInt = scroll;
+		// Parsed de waarde van seriele verbinding naar de integer speed. Lukt dit niet -> default gravity 
+		System.Int32.TryParse(serial.ReadLine(), out tempInt);
+		speed = tempInt;
+
 	}
 
+	// Update is called once per frame
 	void Update () 
 	{
-		rb. velocity = new Vector2 (-scroll, 0);
-		//parsed de waarde die gelezen wordt op readline naar tempInt.
-		try {
+		if (stopScrolling) {
+			rb.velocity = Vector2.zero;
+		}  else {
+			rb.velocity = new Vector2 (-speed, 0);
+		} 
+
+
+		 try {
 			System.Int32.TryParse(serial.ReadLine(), out tempInt);
 
 			// als tempInt niet gelijk is aan de huidige waarde van gravity -> verander de gravity naar de nieuwe waarde.
-			if (!(scroll == tempInt)) {
-				scroll = tempInt;
-				speed = scroll;
-				tempInt = scroll;
-			}
+			//if (!(speed == tempInt)) {
+				speed = tempInt;
+			//}
 		}
-		catch(System.TimeoutException) {}
-		Debug.Log (scroll);
-	}
-}
-/*
-	void Start ()
-	{
-		rb = GetComponent<Rigidbody2D> ();
+		catch(System.TimeoutException) {} 
+		Debug.Log (speed); 
 
-		if (!serial.IsOpen) {
-			serial.Open ();
-		}
-
-		string gravity = serial.ReadLine();
-
-
-		if(!System.String.IsNullOrEmpty(gravity)){
-			speed = float.Parse(gravity);
-			tempInt = int.Parse(gravity);
-		}
-	}
-
-	void Update () 
-	{
-
-		rb. velocity = new Vector2 (scroll, 0);
-
-		string gravity = serial.ReadLine();
-		if (!System.String.IsNullOrEmpty (gravity)) {
-
-			if (int.Parse (gravity) == tempInt) {
-				speed = float.Parse (gravity);
-				tempInt = int.Parse (gravity);
-			}
-		}
 	}
 }
 
-*/

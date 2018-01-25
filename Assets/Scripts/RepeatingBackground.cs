@@ -9,7 +9,8 @@ public class RepeatingBackground : MonoBehaviour {
 
 	void Start () {
 	//	groundCollider = GetComponent<BoxCollider2D> ();
-		length = 21.4f;
+		//length = 21.4f;
+		length = 10.0f;
 	}
 	
 	// Update is called once per frame
