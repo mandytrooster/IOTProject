@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\FPSDisplay.cs" />
      <Compile Include="Assets\Scripts\Background.cs" />
+     <Compile Include="Assets\Scripts\BGScroll.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Pipe.cs" />
      <Compile Include="Assets\Scripts\PipePool.cs" />

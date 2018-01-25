@@ -8,6 +8,7 @@ public class BGScroll : MonoBehaviour {
 	Vector2 startPos;
 	int scrollSpeed;
 	int tempInt;
+	int parseValue;
 	public static bool stopScrolling = false;
 
 	SerialPort serial = new SerialPort("/dev/cu.usbmodem1421", 9600);
@@ -21,7 +22,6 @@ public class BGScroll : MonoBehaviour {
 		}
 		serial.ReadTimeout = 200;
 		System.Int32.TryParse(serial.ReadLine(), out tempInt);
-		scrollSpeed = tempInt;
 	}
 
 	void Update () {
@@ -38,11 +38,11 @@ public class BGScroll : MonoBehaviour {
 			System.Int32.TryParse(serial.ReadLine(), out scrollSpeed);
 
 			// als tempInt niet gelijk is aan de huidige waarde van gravity -> verander de gravity naar de nieuwe waarde.
-			//if (!(scrollSpeed == tempInt)) {
-			//	scrollSpeed = tempInt;
+			if (!(scrollSpeed == tempInt)) {
+				scrollSpeed = tempInt;
 				Debug.Log("nieuwe snelheid: " + scrollSpeed);
-			//}
-		}
+			}
+		} 
 		catch(System.TimeoutException) {} 
 		//Debug.Log(scrollSpeed); 
 	}
