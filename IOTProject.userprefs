@@ -1,9 +1,8 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+﻿<Properties StartupItem="IOTProject.csproj" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BGScroll.cs">
     <Files>
-      <File FileName="Assets/Scripts/BGScroll.cs" Line="14" Column="3" />
-      <File FileName="Assets/Scripts/Scrolling.cs" Line="11" Column="21" />
+      <File FileName="Assets/Scripts/BGScroll.cs" Line="20" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

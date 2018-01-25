@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
+using System.Threading;
+
 
 public class BGScroll : MonoBehaviour {
 
@@ -10,18 +12,28 @@ public class BGScroll : MonoBehaviour {
 	int tempInt;
 	int parseValue;
 	public static bool stopScrolling = false;
+	Thread myThread;
+	string serialInput;
+
 
 	SerialPort serial = new SerialPort("/dev/cu.usbmodem1421", 9600);
 
 	void Start () {
 		startPos = new Vector2(24,0);
 		scrollSpeed = 2;
-
 		if (!serial.IsOpen) {
 			serial.Open ();
 		}
-		serial.ReadTimeout = 200;
-		System.Int32.TryParse(serial.ReadLine(), out tempInt);
+		myThread = new Thread(new ThreadStart(GetArduino));
+		myThread.Start();
+	}
+
+	private void GetArduino(){
+
+		while(myThread.IsAlive)
+		{
+			serialInput = serial.ReadLine();
+		}
 	}
 
 	void Update () {
@@ -32,18 +44,14 @@ public class BGScroll : MonoBehaviour {
 
 			transform.position = startPos;
 		} 
-			
 
-		try {
-			System.Int32.TryParse(serial.ReadLine(), out scrollSpeed);
-
-			// als tempInt niet gelijk is aan de huidige waarde van gravity -> verander de gravity naar de nieuwe waarde.
-			if (!(scrollSpeed == tempInt)) {
+		if (serialInput != null) {
+			System.Int32.TryParse (serialInput, out tempInt);
+			if (tempInt != 0 && tempInt < 10) {
 				scrollSpeed = tempInt;
-				Debug.Log("nieuwe snelheid: " + scrollSpeed);
 			}
-		} 
-		catch(System.TimeoutException) {} 
-		//Debug.Log(scrollSpeed); 
+		}
+		Debug.Log (scrollSpeed);
+
 	}
 }
