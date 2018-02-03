@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public static bool buttonPressed;
 	Thread myThread;
 	string serialInput;
+	bool threadRunning;
 
 
 	void Start () {
@@ -24,16 +25,25 @@ public class PlayerController : MonoBehaviour {
 		if (!serial.IsOpen) {
 			serial.Open ();
 		} 
-	
+		threadRunning = true;
 		myThread = new Thread(new ThreadStart(GetArduino));
 		myThread.Start();
 	}
-		
+
+	private void closeThread() {
+		threadRunning = false;
+		serial.Close();
+		Debug.Log("thread is closed");
+	}
+
 	private void GetArduino(){
 
-		while (myThread.IsAlive) {
+		while (threadRunning) {
 			serialInput = serial.ReadLine ();
 			Debug.Log ("serial input: " + serialInput);
+			if (GameController.instance.gameOver == true) {
+				closeThread();
+			}
 		}
 	}
 
@@ -45,9 +55,9 @@ public class PlayerController : MonoBehaviour {
 			rb.AddForce (new Vector2 (0, up));
 			anim.enabled = true;
 		} 
-	
+
 		if (serialInput != null) {
-			
+
 			string rotation = serialInput;
 
 			string[] array = rotation.Split (',');
