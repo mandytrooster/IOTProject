@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour {
 	public GameObject gameOverText;
 	public bool gameOver = false;
 	public Text scoreText;
-	//public float scroll;
 	private int score = 0;
 
 
@@ -25,9 +24,10 @@ public class GameController : MonoBehaviour {
 	}
 		
 	void Update () {
-
+		Debug.Log (gameOver);
 		if (gameOver == true && Input.GetMouseButtonDown (0)) {
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+			
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
 
@@ -39,11 +39,9 @@ public class GameController : MonoBehaviour {
 		scoreText.text = "Score: " + score.ToString ();
 	}
 
-	public void BirdDied()
-	{
+	public void OnGround(){
+	
 		gameOverText.SetActive (true);
 		gameOver = true;
-		Scrolling.stopScrolling = true;
 	}
-
 }
