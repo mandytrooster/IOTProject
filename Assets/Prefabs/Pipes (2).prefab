@@ -21,11 +21,10 @@ GameObject:
   - component: {fileID: 4412342403566680}
   - component: {fileID: 61058456113282634}
   - component: {fileID: 50505692736515496}
-  - component: {fileID: 114621673440660948}
-  - component: {fileID: 114318726179103022}
-  m_Layer: 0
+  - component: {fileID: 114324421972566202}
+  m_Layer: 11
   m_Name: Pipes (2)
-  m_TagString: Untagged
+  m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +39,7 @@ GameObject:
   - component: {fileID: 4984070457547098}
   - component: {fileID: 212079654196341506}
   - component: {fileID: 61224388446630928}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pipe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +56,7 @@ GameObject:
   - component: {fileID: 4918767951068270}
   - component: {fileID: 212336969627098548}
   - component: {fileID: 61868303440058676}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039890694107754}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 6.63, y: 2.36, z: 0}
+  m_LocalPosition: {x: -0.105909035, y: 4.0516415, z: 0}
   m_LocalScale: {x: 4, y: 3, z: 0}
   m_Children:
   - {fileID: 4918767951068270}
@@ -99,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808084429394040}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.04, z: 0}
+  m_LocalPosition: {x: 0, y: -1.21, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4412342403566680}
@@ -200,7 +199,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 1.6}
   m_EdgeRadius: 0
---- !u!114 &114318726179103022
+--- !u!114 &114324421972566202
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -208,18 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1039890694107754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f03627d7c4b4b5d90505a07c0636a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114621673440660948
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1039890694107754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed1cf485a61144699a24087638c4561b, type: 3}
+  m_Script: {fileID: 11500000, guid: bc147b28a165b4a58af9fda21258ff8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212079654196341506
