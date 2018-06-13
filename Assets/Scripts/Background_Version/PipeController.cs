@@ -4,44 +4,85 @@ using UnityEngine;
 
 public class PipeController : MonoBehaviour {
 
-	public int pipePoolSize = 5;
-	public GameObject pipePrefab;
-	public float spawnRate = 4f;
-	public float pipeTopMin;
-	public float pipeTopMax;
+//	public GameObject pipes;
+//	public float pipeMin = -1;
+//	public float pipeMax = 3;
+//	private Vector2 pipePosition = new Vector2 (9,-3);
+//	private float timer;
+//
+//	void Start(){
+//		timer = 2;
+//	}
+//
+//	void Update(){
+//	
+//		timer -= Time.deltaTime;
+//		Debug.Log (timer);
+//
+//		if (timer <= 0) {
+//			float spawnXPosition = Random.Range (pipeMin, pipeMax);
+//			float spawnYPosition = Random.Range (pipeMin, pipeMax);
+//
+//			Vector2 randomPos = new Vector2(spawnXPosition, spawnYPosition);
+//			Instantiate (pipes, randomPos, Quaternion.identity);
+//			timer = 2;
+//		}
+//
+////		//TODO FIX THE TIMER SO THAT THE DISTANCE IS BIGGER WITH SLOWER SPEED
+////		if (timer >= BackGroundScrolling.backgroundSpeed) {
+////			timer = 2;
+////			float spawnYPosition = Random.Range (pipeMin, pipeMax);
+////			Instantiate (pipes, pipePosition, Quaternion.identity);
+////		}
+//	}
+	public GameObject columnPrefab;                                 
+	public int columnPoolSize = 5;                                 
+	public float spawnRate = 3f;                                    
+	public float columnMin = 50f;                                   
+	public float columnMax = 80f;                                 
 
-	private Vector2 startPosition = new Vector2 (9f, 3f);
-	private GameObject[] pipesTop;
-	private float timeSinceSpawned;
-	private float spawnXPos = 10f;
-	private int currentPipe = 0;
+	private GameObject[] columns;                                  
+	private int currentColumn = 0;                                  
 
-	void Start () {
+	private Vector2 objectPoolPosition = new Vector2 (-15,3);  
+	private float spawnXPosition = 10f;
 
-		pipesTop = new GameObject[pipePoolSize];
-		for (int i = 0; i < pipePoolSize; i++) {
-			//initiate the first pipe at the pipePosition location
-			pipesTop [i] = (GameObject)Instantiate (pipePrefab, startPosition, Quaternion.identity);
+	private float timeSinceLastSpawned;
+
+
+	void Start()
+	{
+		timeSinceLastSpawned = 0f;
+		columns = new GameObject[columnPoolSize];
+
+		for(int i = 0; i < columnPoolSize; i++)
+		{
+			//create the columns
+			columns[i] = (GameObject)Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity);
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		timeSinceSpawned += Time.deltaTime;
 
-		if (GameController.gameOver == false && timeSinceSpawned >= spawnRate) {
-			timeSinceSpawned = 0;
+	//This spawns columns as long as the game is not over.
+	void Update()
+	{
+		
+		timeSinceLastSpawned += Time.deltaTime;
 
-			//Gets a random value between the min & maxwhere the pipe spawns on the y axis.
-			float spawnYPos = Random.Range (pipeTopMin, pipeTopMax);
+		if (GameController.gameOver == false && timeSinceLastSpawned >= spawnRate) 
+		{   
+			timeSinceLastSpawned = 0f;
+			float spawnYPosition = Random.Range(columnMin, columnMax);
 
-			//the x and y position that the pipes get spawned on. 10 to have it out of screen. 
-			pipesTop [currentPipe].transform.position = new Vector2 (spawnXPos, spawnYPos);
-			currentPipe++;
+			//spawn the colomn at the random position
+			columns[currentColumn].transform.position = new Vector2(spawnXPosition, spawnYPosition);
 
-			if (currentPipe >= pipePoolSize) {
+			currentColumn ++;
 
-				currentPipe = 0;
+			//If the value of the currentColumn is bigger than the size of the pool, set it to 0
+			if (currentColumn >= columnPoolSize) 
+			{
+				currentColumn = 0;
 			}
 		}
 	}

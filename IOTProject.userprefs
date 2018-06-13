@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Background_Version/Pipe.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Background_Version/PipeController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Background_Version/GameController.cs" Line="13" Column="8" />
-      <File FileName="Assets/Scripts/Background_Version/PlayerController.cs" Line="89" Column="5" />
-      <File FileName="Assets/Scripts/Background_Version/BackGroundScrolling.cs" Line="10" Column="2" />
-      <File FileName="Assets/Scripts/Background_Version/PipeController.cs" Line="44" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/Background_Version/Pipe.cs" Line="22" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Background_Version/PipeController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Background_Version/Pipe.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Background_Version/BackGroundScrolling.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Background_Version/GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Background_Version/PlayerController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
