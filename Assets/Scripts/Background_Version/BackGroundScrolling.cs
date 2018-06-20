@@ -8,10 +8,6 @@ public class BackGroundScrolling : MonoBehaviour {
 	public float speed;
 	public static float newSpeed;
 
-	void Start () {
-
-	}
-		
 	void Update () {
 
 		newSpeed= (float)PlayerController.speedValue;
@@ -22,7 +18,5 @@ public class BackGroundScrolling : MonoBehaviour {
 		if (GameController.gameOver == true) {
 			backgroundSpeed = 0;
 		}
-			
-		Debug.Log ("bgSpeed" + backgroundSpeed);
 	}
 }

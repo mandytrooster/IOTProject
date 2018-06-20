@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
@@ -7,7 +7,6 @@ using UnityEngine.Analytics;
 
 public class PlayerController : MonoBehaviour {
 
-	public static bool isDead = false;
 	private Rigidbody2D rb;
 	private Animator anim;
 	private float up = 0.03f;
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (isDead == false) 
+		if (GameController.gameOver == false) 
 		{
 			if (Input.GetMouseButtonDown (0))
 			{
@@ -67,6 +66,7 @@ public class PlayerController : MonoBehaviour {
 
 			string[] array = potentiometer.Split (',');
 		    speedValue = int.Parse (array [0]);
+			//TODO fix error: system.IndexOutOfRangeExeptio has been thrown
 		    buttonValue = int.Parse (array [1]);
 
 			if (buttonValue == 0) {
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour {
 		if (coll.gameObject.tag == "Ground")
 			anim.enabled = false;
 			GameController.gameOver = true;
-			OnGameOver ();
 		}
 		public void OnTriggerEnter2D(Collider2D other)
 		{
@@ -90,10 +89,4 @@ public class PlayerController : MonoBehaviour {
 				gameControl.Scored ();
 			}
 		}
-
-		public void OnGameOver()
-		{
-			Analytics.CustomEvent("gameOver");
-		}
-		
 }

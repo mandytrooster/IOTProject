@@ -40,3 +40,4 @@
 /Users/mandy/Documents/GameMechanics/Trooster_500687653/IOTProject/Temp/bin/Debug/Unity.Cecil.Mdb.dll
 /Users/mandy/Documents/GameMechanics/Trooster_500687653/IOTProject/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
 /Users/mandy/Documents/GameMechanics/Trooster_500687653/IOTProject/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+/Users/mandy/Documents/GameMechanics/Trooster_500687653/IOTProject/Temp/bin/Debug/UnityEngine.Analytics.dll

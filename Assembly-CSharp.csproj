@@ -54,9 +54,13 @@
      <Compile Include="Assets\FPSDisplay.cs" />
      <Compile Include="Assets\Scripts\Background_Version\BackGroundScrolling.cs" />
      <Compile Include="Assets\Scripts\Background_Version\GameController.cs" />
+     <Compile Include="Assets\Scripts\Background_Version\HighScore.cs" />
+     <Compile Include="Assets\Scripts\Background_Version\HighScoreInput.cs" />
+     <Compile Include="Assets\Scripts\Background_Version\HighScoreList.cs" />
      <Compile Include="Assets\Scripts\Background_Version\Pipe.cs" />
      <Compile Include="Assets\Scripts\Background_Version\PipeController.cs" />
      <Compile Include="Assets\Scripts\Background_Version\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Background_Version\PlayerScore.cs" />
      <Compile Include="Assets\Scripts\Old\Background.cs" />
      <Compile Include="Assets\Scripts\Old\BGScroll.cs" />
      <Compile Include="Assets\Scripts\Old\Bullet.cs" />
