@@ -7,16 +7,20 @@ public class PipeController : MonoBehaviour {
 	public GameObject pipe;
 	private float pipeMin = -1;
 	private float pipeMax = -5;
-	private float timer;
+	private float pipeTimer;
 
 	void Start(){
-		timer = 2;
+		//set timer to 2 so that only one pipe spawns for the first pipe
+		pipeTimer = 2;
 	}
 
 	void Update(){
-		timer -= Time.deltaTime;
 
-		if (timer <= 0 && GameController.gameOver == false) {
+		if (PlayerController.gamePaused == false) {
+			pipeTimer -= Time.deltaTime;
+		}
+
+		if (pipeTimer <= 0 && GameController.gameOver == false && PlayerController.gamePaused == false) {
 			pipeSpeed ();
 			spawnPipe ();
 		}
@@ -24,21 +28,21 @@ public class PipeController : MonoBehaviour {
 
 	void pipeSpeed (){
 
-		//background speed = 0,4 so to make it around number it's multiplied by 10
+		//background speed = 0,4 so to make it a round number it's multiplied by 10
 		int speed = (int)(BackGroundScrolling.backgroundSpeed * 10);
 
 		switch (speed) {
 		case 4:
-			timer = 1.5f;
+			pipeTimer = 1.5f;
 			break;
 		case 3:
-			timer = 2;
+			pipeTimer = 2;
 			break;
 		case 2:
-			timer = 3;
+			pipeTimer = 3;
 			break;
 		case 1:
-			timer = 8;
+			pipeTimer = 8;
 			break;
 		}
 	}

@@ -12,23 +12,32 @@ public class PlayerController : MonoBehaviour {
 	private float up = 0.03f;
 
 	SerialPort serial = new SerialPort("/dev/cu.usbmodem1421", 9600);
-	public static bool buttonPressed;
+	private bool buttonPressed;
 	Thread myThread;
 	private string serialInput;
 	private bool threadRunning;
 
 	public static int speedValue;
 	public static int buttonValue;
+	public static int secondButtonValue;
 
 	public GameController gameControl;
+
+	public static bool gamePaused;
+	private float timer = 5;
+	private bool buttonTimer = false;
+	private float timebetweenbuttons = 0.2f;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent < Animator> ();
 
-		if (!serial.IsOpen) {
+		if (!serial.IsOpen) {	
+			//make the game pause untill it is connected
+			PauseGame();
 			serial.Open ();
-		} 
+		}
+			
 		threadRunning = true;
 		myThread = new Thread(new ThreadStart(GetArduino));
 		myThread.Start();
@@ -51,42 +60,68 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (GameController.gameOver == false) 
-		{
-			if (Input.GetMouseButtonDown (0))
-			{
-				rb.velocity = Vector2.zero;
-				rb.AddForce (new Vector2 (0, up));
-			} 
-		}
 
+		if(gamePaused == true){
+			timer -= Time.deltaTime;
+		}
+		if(timer <= 0){
+			gamePaused = false;
+			rb.isKinematic = false;
+		}
+			
 		if (serialInput != null) {
 
 			string potentiometer = serialInput;
 
 			string[] array = potentiometer.Split (',');
 		    speedValue = int.Parse (array [0]);
-			//TODO fix error: system.IndexOutOfRangeExeptio has been thrown
 		    buttonValue = int.Parse (array [1]);
+			secondButtonValue = int.Parse (array [2]);
 
 			if (buttonValue == 0) {
 				buttonPressed = false;
-			} else if (buttonValue == 1) {
+			} else if (buttonValue == 1 && buttonTimer == false) {
 				buttonPressed = true;
+			} 
+		}
+
+		if (GameController.gameOver == false && gamePaused == false) 
+		{
+			if (Input.GetMouseButtonDown (0) || buttonPressed == true)
+			{
+				Jump ();
 			} 
 		}
 	}
 		
-		void OnCollisionEnter2D(Collision2D coll) {
+	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Ground")
 			anim.enabled = false;
 			GameController.gameOver = true;
-		}
-		public void OnTriggerEnter2D(Collider2D other)
-		{
+	}
+
+	public void OnTriggerEnter2D(Collider2D other){
 			if (other.tag == "Pipe")
 			{
 				gameControl.Scored ();
 			}
-		}
+	}
+
+	void PauseGame(){
+		gamePaused = true;
+		rb.isKinematic = true;
+	}
+
+	void Jump(){
+		rb.velocity = Vector2.zero;
+		rb.AddForce (new Vector2 (0, up));
+		buttonPressed = false;
+		StartCoroutine (waitForNext ());
+	}
+
+	IEnumerator waitForNext() {
+		buttonTimer = true;
+		yield return new WaitForSeconds (timebetweenbuttons);
+		buttonTimer = false;
+	}
 }

@@ -9,7 +9,7 @@ public class Pipe : MonoBehaviour {
 
 	void Update () {
 
-		if (GameController.gameOver == false) {
+		if (GameController.gameOver == false && PlayerController.gamePaused == false) {
 			pipeSpeed = (float)PlayerController.speedValue;
 			transform.Translate(Vector3.left * pipeSpeed * Time.deltaTime);
 			//destroy the pipe once it is outside of the screen

@@ -10,12 +10,13 @@ public class BackGroundScrolling : MonoBehaviour {
 
 	void Update () {
 
+
 		newSpeed= (float)PlayerController.speedValue;
 		Vector2 bgScroll = new Vector2 (Time.time * backgroundSpeed, 0);
 		GetComponent<Renderer> ().material.mainTextureOffset = bgScroll;﻿
 		backgroundSpeed = newSpeed/10;
 
-		if (GameController.gameOver == true) {
+		if (GameController.gameOver == true || PlayerController.gamePaused == true) {
 			backgroundSpeed = 0;
 		}
 	}
