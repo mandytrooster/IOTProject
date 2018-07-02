@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour {
-	List<PlayerScore> highscore;
+	private	List<PlayerScore> highscore;
 
 	void Start(){
 		highscore = new List<PlayerScore>();

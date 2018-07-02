@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour {
 	private bool buttonTimer = false;
 	private float timebetweenbuttons = 0.2f;
 
+	public Sprite[] sprites;
+	private int spriteNumber = 0;
+	private bool spriteTimer = false;
+	private float timebetweenSprites = 0.3f;
+
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent < Animator> ();
@@ -92,6 +97,20 @@ public class PlayerController : MonoBehaviour {
 				Jump ();
 			} 
 		}
+
+		if (secondButtonValue == 1 && spriteTimer == false) {
+
+			//go through the array of sprites and reset it once it's at the 3rd color
+			spriteNumber += 1;
+			if(spriteNumber >= 3){
+				spriteNumber = 0;
+			}
+			//set the sprite to the current sprite number which is changed by pressing the button
+			GetComponent<SpriteRenderer>().sprite = sprites[spriteNumber];
+
+			StartCoroutine (waitForNextSprite ());
+			Debug.Log (spriteNumber);	
+		}
 	}
 		
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -101,10 +120,17 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other){
-			if (other.tag == "Pipe")
-			{
-				gameControl.Scored ();
-			}
+			
+		if (other.tag == "PipeRed" && spriteNumber == 0) {
+			gameControl.Scored ();
+		} else if (other.tag == "PipeBlue" && spriteNumber == 1) {
+			gameControl.Scored ();
+		} else if (other.tag == "PipeGreen" && spriteNumber == 2) {
+			gameControl.Scored ();
+		} else {
+			GameController.gameOver = true;
+		}
+			
 	}
 
 	void PauseGame(){
@@ -123,5 +149,10 @@ public class PlayerController : MonoBehaviour {
 		buttonTimer = true;
 		yield return new WaitForSeconds (timebetweenbuttons);
 		buttonTimer = false;
+	}
+	IEnumerator waitForNextSprite() {
+		spriteTimer = true;
+		yield return new WaitForSeconds (timebetweenSprites);
+		spriteTimer = false;
 	}
 }

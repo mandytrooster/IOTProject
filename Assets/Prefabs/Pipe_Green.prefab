@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 50505692736515496}
   - component: {fileID: 114324421972566202}
   m_Layer: 11
-  m_Name: Pipes (2)
-  m_TagString: Pipe
+  m_Name: Pipe_Green
+  m_TagString: PipeGreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +69,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039890694107754}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.105909035, y: 4.0516415, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23666766, y: -0.4803298, z: 0}
   m_LocalScale: {x: 4, y: 3, z: 0}
   m_Children:
   - {fileID: 4918767951068270}
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.253404, y: 0.7493677}
+  m_Offset: {x: 0.2631095, y: 0.7493677}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14680797, y: 1.2815509}
+  m_Size: {x: 0.16789025, y: 1.2815509}
   m_EdgeRadius: 0
 --- !u!61 &61224388446630928
 BoxCollider2D:

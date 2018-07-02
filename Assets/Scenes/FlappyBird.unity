@@ -228,7 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b56f846df264dda878316aff99801a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipe: {fileID: 1039890694107754, guid: e0a684a89606a4007921c128867993c9, type: 2}
+  pipe1: {fileID: 1347172979735194, guid: 03a75d15a23bf40119cfbd5e7fed92dd, type: 2}
+  pipe2: {fileID: 1039890694107754, guid: e0a684a89606a4007921c128867993c9, type: 2}
+  pipe3: {fileID: 1373110139487904, guid: 8cc16e82152a84a4d83b018400f3c2ec, type: 2}
 --- !u!4 &223548728
 Transform:
   m_ObjectHideFlags: 0
@@ -1575,7 +1577,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788383311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c36002873956b4efd842b205b7d93a5e, type: 2}
   m_CullingMode: 0
@@ -1667,7 +1669,7 @@ SpriteRenderer:
   m_SortingLayerID: 275720095
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300128, guid: 2312dda80c2cb47f1941e942bdc800fc, type: 3}
+  m_Sprite: {fileID: 21300128, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1702,3 +1704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameControl: {fileID: 1563258840}
+  sprites:
+  - {fileID: 21300128, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
+  - {fileID: 21300114, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
+  - {fileID: 21300120, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}

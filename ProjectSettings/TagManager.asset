@@ -8,6 +8,9 @@ TagManager:
   - Ground
   - Pipe
   - Pipes
+  - PipeBlue
+  - PipeRed
+  - PipeGreen
   layers:
   - Default
   - TransparentFX

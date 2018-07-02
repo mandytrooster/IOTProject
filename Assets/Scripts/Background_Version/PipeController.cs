@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PipeController : MonoBehaviour {
 
-	public GameObject pipe;
+	List<GameObject> pipeList = new List<GameObject>();
+	public GameObject pipe1;
+	public GameObject pipe2;
+	public GameObject pipe3;
+
+	//public GameObject pipe;
 	private float pipeMin = -1;
 	private float pipeMax = -5;
 	private float pipeTimer;
@@ -12,6 +17,11 @@ public class PipeController : MonoBehaviour {
 	void Start(){
 		//set timer to 2 so that only one pipe spawns for the first pipe
 		pipeTimer = 2;
+
+		//add the different color pipes to the list to chose from
+		pipeList.Add(pipe1);
+		pipeList.Add(pipe2);
+		pipeList.Add(pipe3);
 	}
 
 	void Update(){
@@ -53,6 +63,8 @@ public class PipeController : MonoBehaviour {
 		//the spawnXPosition is 9 so that the pipe will be spawned outside of the screen
 		float spawnXPosition = 9;
 	    Vector2 randomPos = new Vector2(spawnXPosition, spawnYPosition);
-		Instantiate (pipe, randomPos, Quaternion.identity);
+		//get a random pipe color from the list 
+		int prefabIndex = UnityEngine.Random.Range(0,3);
+		Instantiate (pipeList[prefabIndex], randomPos, Quaternion.identity);
 	}
 }
