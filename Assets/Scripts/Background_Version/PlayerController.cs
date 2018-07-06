@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(Collider2D other){
-			
+		//checks if the player is the same color as the pipe
 		if (other.tag == "PipeRed" && spriteNumber == 0) {
 			gameControl.Scored ();
 		} else if (other.tag == "PipeBlue" && spriteNumber == 1) {

@@ -1,7 +1,10 @@
 OSXStandalone
 SceneListBegin?
 Assets/Scenes/FlappyBird.unity
+Assets/Scenes/HighScoreScene.unity
+Assets/Scenes/StartMenu.unity
 SceneListEnd?
+df2e6153e7d100cca008485f5da82db1 Assembly-CSharp.dll:.PlayerScore
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -109,18 +112,22 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScrollingBackground
+82b2fe47cc19f8039471ddaf6cad972a Assembly-CSharp.dll:.PipeController
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+5248856a6323deb874b7c6ffb812e905 Assembly-CSharp.dll:.HighScoreInput
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FPSDisplay
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Pipe
-13c973e9d780ba3449ce5a4a4f57d0bb Assembly-CSharp.dll:.Scrolling
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Scrolling
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ShowHighscores
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 bfec8c16c58d5d2c7e731941e505dd63 Assembly-CSharp.dll:.BulletEmitter
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Pipe
 395683a53d4924b42e12066541b9e549 Assembly-CSharp.dll:.PipePool
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -149,6 +156,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Player
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-39ee32872613cea0264c5d1e34ddeb35 Assembly-CSharp.dll:.GameController
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScrollingBackground
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerController
+dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.BackGroundScrolling
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.HighScore
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ButtonController
+f3af7b8d1823aa39830047853efca15e Assembly-CSharp.dll:.PlayerController
+454da462f4959cd235904b9669734c54 Assembly-CSharp.dll:.GameController
+a17cce7cc4e097e4df439426ea85bc4a Assembly-CSharp.dll:.CountDown

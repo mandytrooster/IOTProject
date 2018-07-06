@@ -515,7 +515,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300128, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
   - {fileID: 21300120, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
-  - {fileID: 21300114, guid: b4fc4c5e2ca864efbb7c375088812b4d, type: 3}
+  - {fileID: 21300126, guid: 0a4bb6a5b27444d0dbca1b549453b3a1, type: 3}
 --- !u!50 &1207754874
 Rigidbody2D:
   serializedVersion: 4

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
+using UnityEngine.Networking;
 
 public class HighScoreInput : MonoBehaviour {
 	public string highscoreName;
@@ -15,7 +16,6 @@ public class HighScoreInput : MonoBehaviour {
 		mainInputField.ActivateInputField();
 		mainInputField.onEndEdit.AddListener(delegate {LockInput(mainInputField); });
 		highscore = new List<PlayerScore>();
-//		dictionary.Add ("highscore",0);
 	}
 
 	void LockInput(InputField input)
@@ -25,6 +25,7 @@ public class HighScoreInput : MonoBehaviour {
 			Debug.Log("Text has been entered " + input.text);
 			highscoreName = input.text;
 			HighScore._instance.SubmitScore (highscoreName, GameController.score);
+			StartCoroutine(SendScore(highscoreName, GameController.score)); 
 		}
 		else if (input.text.Length == 0)
 			{
@@ -32,34 +33,30 @@ public class HighScoreInput : MonoBehaviour {
 			}
 	}
 
-}
 
-//	void OnGUI(){
-//
-//		if(GUILayout.Button("Clear Leaderboard"))
-//		{
-//			HighScore._instance.ClearLeaderBoard();            
-//		}
-//
-//		if(GUILayout.Button("Get LeaderBoard"))
-//		{
-//			highscore = HighScore._instance.GetHighScore();  
-//		}
-//
-//		GUILayout.Space (60);
-//
-//		GUILayout.BeginHorizontal ();
-//		GUILayout.Label ("Name", GUILayout.Width (Screen.width / 2));
-//		GUILayout.Label ("Scores", GUILayout.Width (Screen.width / 2));
-//		GUILayout.EndHorizontal ();
-//
-//		GUILayout.Space (25);
-//
-//		foreach (PlayerScore _score in highscore) {
-//			GUILayout.BeginHorizontal ();
-//			GUILayout.Label (_scoreGUI.name, GUILayout.Width (Screen.width / 2));
-//			GUILayout.Label ("" + _score.score, GUILayout.Width (Screen.width / 2));
-//			GUILayout.EndHorizontal ();
-//		}
-//	}
-//}
+	IEnumerator SendScore(string name, int score) {
+		PlayerScore jsonObject = new PlayerScore();
+		jsonObject.name = name;
+		jsonObject.score = score;
+		string json = JsonUtility.ToJson(jsonObject);
+
+		// creates a post request to the website
+		var uwr = new UnityWebRequest("https://highscoreapplications.herokuapp.com/newscore", "POST");
+		byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
+		uwr.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+		uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+		// sets header as json content
+		uwr.SetRequestHeader("Content-Type", "application/json");
+
+		yield return uwr.SendWebRequest();
+
+		if (uwr.isNetworkError) {
+			Debug.Log("Error while sending" + uwr.error);
+		}
+		else {
+			Debug.Log("Received: " + uwr.downloadHandler.text);
+		}
+	}
+
+}
+	

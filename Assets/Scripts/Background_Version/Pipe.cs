@@ -8,7 +8,7 @@ public class Pipe : MonoBehaviour {
 	private float endPos = -10;
 
 	void Update () {
-
+		//makes the pipes that spawn move towards the player
 		if (GameController.gameOver == false && PlayerController.gamePaused == false) {
 			pipeSpeed = (float)PlayerController.speedValue;
 			transform.Translate(Vector3.left * pipeSpeed * Time.deltaTime);

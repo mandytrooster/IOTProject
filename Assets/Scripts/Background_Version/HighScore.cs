@@ -38,8 +38,7 @@ public class HighScore : MonoBehaviour
 			
 		int i = 1;
 		//haalt de highscores op en zet het in de highscores object
-		//ga de 1tm10 en haalt de highscores op, en zet ze op een tijdelijke highscore lijst
-		//haalt de scorList<PlayerScore> playerScores = new List<PlayerScore> ();es op van de playerprefs
+		//haalt de highscores op, en zet ze op een tijdelijke highscore lijst
 		while (i <= LeaderboardLength && PlayerPrefs.HasKey ("HighScore" + i + "score")) {
 			PlayerScore temp = new PlayerScore ();
 			temp.score = PlayerPrefs.GetInt ("HighScore" + i + "score");
@@ -48,8 +47,8 @@ public class HighScore : MonoBehaviour
 			i++;
 		}
 
-		//Als de highscore lijst leeg is, maak eerst een nieuwe score opject aan
-		//voeg aan die score object de naam en de score mee 
+		//Als de highscore lijst leeg is, maak eerst een nieuwe score object aan
+		//geef aan die score object de naam en de score mee 
 		//deze hoeft niet vergeleken te worden omdat dit de eerste score is in de lijst
 		if (playerScores.Count == 0) {                        
 			PlayerScore _temp = new PlayerScore ();
@@ -66,10 +65,7 @@ public class HighScore : MonoBehaviour
 					playerScores.Insert (i - 1, _temp);
 					break;    
 				}
-
-			//als i gelijk is aan de hoveelheid scores in de highscore, en het 
-			//heeft nog geen 10 bereikt 
-			//wordt in de eerste forloop vergeleken
+					
 			//voor wanneer de leaderboard nog niet vol is 
 			if (i == playerScores.Count && i < LeaderboardLength) {
 				PlayerScore _temp = new PlayerScore ();
@@ -105,7 +101,6 @@ public class HighScore : MonoBehaviour
 	}
 	public void ClearLeaderBoard ()
 	{
-		//for(int i=0;i<HighScores.
 		List<PlayerScore> HighScores = GetHighScore();
 
 		for(int i=1;i<=HighScores.Count;i++)

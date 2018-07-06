@@ -20,8 +20,7 @@ public class CountDown : MonoBehaviour {
 		if (coountdown <= 0)
 		{
 			StopCoroutine("Timer");
-			countdownObject.SetActive (false);
-			
+			countdownObject.SetActive (false);		
 		}
 	}
 

@@ -9,8 +9,6 @@ public class BackGroundScrolling : MonoBehaviour {
 	public static float newSpeed;
 
 	void Update () {
-
-
 		newSpeed= (float)PlayerController.speedValue;
 		Vector2 bgScroll = new Vector2 (Time.time * backgroundSpeed, 0);
 		GetComponent<Renderer> ().material.mainTextureOffset = bgScroll;﻿
